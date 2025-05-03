@@ -6,6 +6,8 @@ import pickle
 
 # Streamlit interface
 st.title("E-Commerce")
+st.subheader("Help the company maximize customer spending by identifying which platform (app or website) is more valuable.")
+
 
 # Add image
 st.image("https://daxg39y63pxwu.cloudfront.net/images/blog/feature-store-in-machine-learning/ML_Feature_Store.webp")
@@ -46,9 +48,9 @@ def train_and_save_model():
     st.write("Model trained and saved as model.pkl!")
 
 # Check if the model exists and train if necessary
-if not 'model.pkl' in locals():
-    if st.button("Train Model"):
-        train_and_save_model()
+# if not 'model.pkl' in locals():
+#     if st.button("Train Model"):
+#         train_and_save_model()
 
 # Making predictions
 def make_prediction():
