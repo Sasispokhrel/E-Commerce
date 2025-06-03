@@ -15,9 +15,9 @@ st.image("https://daxg39y63pxwu.cloudfront.net/images/blog/feature-store-in-mach
 st.subheader("Enter customer attributes")
 
 # Taking input from the user
-avg_session_length = st.number_input("Average Session Length", min_value=0.0, max_value=50.0, value=30.0)
-time_on_app = st.number_input("Time on App (minutes)", min_value=0.0, max_value=30.0, value=12.0)
-time_on_website = st.number_input("Time on Website (minutes)", min_value=0.0, max_value=50.0, value=35.0)
+avg_session_length = st.number_input("Average Session Length", min_value=0.0, max_value=37.0, value=30.0)
+time_on_app = st.number_input("Time on App (minutes)", min_value=0.0, max_value=16.0, value=12.0)
+time_on_website = st.number_input("Time on Website (minutes)", min_value=0.0, max_value=41.0, value=35.0)
 length_of_membership = st.number_input("Length of Membership (in years)", min_value=0.0, max_value=10.0, value=4.0)
 
 # Example training data (for illustration)
