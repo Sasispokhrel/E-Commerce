@@ -57,8 +57,8 @@ def make_prediction():
     # Load the trained model from the pickle file
     with open('model.pkl', 'rb') as f:
         loaded_model = pickle.load(f)
-    
-    # Create the user input as a pandas DataFrame with feature names
+
+    # Create the user input as a pandas DataFrame
     user_input = pd.DataFrame({
         "avg_session_length": [avg_session_length],
         "time_on_app": [time_on_app],
@@ -68,11 +68,24 @@ def make_prediction():
 
     # Make prediction
     prediction = loaded_model.predict(user_input)
-    
-    # Display the prediction
     st.write(f"Predicted Purchase Value: ${prediction[0]:.2f}")
 
-# Prediction button logic
+    # Get feature names and coefficients
+    features = ["avg_session_length", "time_on_app", "time_on_website", "length_of_membership"]
+    coefs = loaded_model.coef_
+
+    # Calculate contributions
+    app_contribution = coefs[features.index("time_on_app")] * time_on_app
+    website_contribution = coefs[features.index("time_on_website")] * time_on_website
+
+    # Compare and display
+    if app_contribution > website_contribution:
+        st.success("📱 The App contributes more to the predicted purchase value.")
+    elif website_contribution > app_contribution:
+        st.success("💻 The Website contributes more to the predicted purchase value.")
+    else:
+        st.info("📊 Both platforms contribute equally.")
+# Prediction trigger
 if st.button("Make a Prediction"):
     make_prediction()
 
